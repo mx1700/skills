@@ -19,9 +19,6 @@ import requests
 
 
 def find_env_file() -> Optional[Path]:
-    env_path = Path(".env")
-    if env_path.exists():
-        return env_path
     home_env = Path.home() / ".env"
     if home_env.exists():
         return home_env
@@ -52,12 +49,30 @@ def check_api_key() -> tuple[bool, Optional[str]]:
     return True, api_key
 
 
-def create_env_file(api_key: str, directory: Optional[Path] = None) -> Path:
-    if directory is None:
-        directory = Path.cwd()
-    env_path = directory / ".env"
+def write_api_key_to_env(api_key: str) -> Path:
+    env_path = Path.home() / ".env"
+
+    existing_lines: list[str] = []
+    key_exists = False
+    if env_path.exists():
+        try:
+            with open(env_path, "r") as f:
+                for line in f:
+                    stripped = line.strip()
+                    if stripped.startswith("POLLINATIONS_API_KEY="):
+                        existing_lines.append(f"POLLINATIONS_API_KEY={api_key}\n")
+                        key_exists = True
+                    else:
+                        existing_lines.append(line)
+        except Exception:
+            existing_lines = []
+
+    if not key_exists:
+        existing_lines.append(f"POLLINATIONS_API_KEY={api_key}\n")
+
     with open(env_path, "w") as f:
-        f.write(f"POLLINATIONS_API_KEY={api_key}\n")
+        f.writelines(existing_lines)
+
     return env_path
 
 
@@ -213,8 +228,8 @@ def main():
         if not args.api_key:
             print("ERROR: --create-env 需要 --api-key 参数")
             sys.exit(1)
-        env_path = create_env_file(args.api_key)
-        print(f"DONE: .env created at {env_path}")
+        env_path = write_api_key_to_env(args.api_key)
+        print(f"DONE: .env updated at {env_path}")
         sys.exit(0)
 
     if not args.prompt:

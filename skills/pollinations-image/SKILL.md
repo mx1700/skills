@@ -21,22 +21,21 @@ Use this skill when the user:
 
 ### Step 1: Check API Key Configuration
 
-Before making API calls, the script will automatically check for `.env` file:
+Before making API calls, the script checks for `.env` file in user's home directory:
 
-1. First checks current working directory for `.env`
-2. Then checks user's home directory for `.env`
-3. Looks for `POLLINATIONS_API_KEY` in the file
+- Looks for `~/.env` (home directory only)
+- Searches for `POLLINATIONS_API_KEY` in the file
 
 If API key is not found, the script will exit with error `API_KEY_NOT_CONFIGURED`. In this case:
 
 - Ask the user for their API key
-- Create `.env` file using the script: `python scripts/generate_image.py --create-env --api-key YOUR_KEY`
+- Update `.env` file using the script: `python scripts/generate_image.py --create-env --api-key YOUR_KEY`
 - Then retry the image generation
 
 **Prompt user message:**
 
 ```
-尚未配置 Pollinations API Key。请提供你的 API Key，我会创建 .env 文件。
+尚未配置 Pollinations API Key。请提供你的 API Key，我会更新 ~/.env 文件。
 (如果没有 API Key，可以在 https://pollinations.ai 获取)
 ```
 
@@ -93,7 +92,7 @@ Display the generated image URL to the user:
 1. Run the script: `python scripts/generate_image.py --prompt "test"`
 2. If error `API_KEY_NOT_CONFIGURED` appears:
    - Ask user: "请提供你的 Pollinations API Key"
-   - After user provides key, create .env:
+   - After user provides key, update ~/.env:
      ```bash
      python scripts/generate_image.py --create-env --api-key USER_PROVIDED_KEY
      ```
@@ -131,7 +130,7 @@ python scripts/generate_image.py --create-env --api-key YOUR_KEY
 
 | Error                    | Meaning          | Action                   |
 | ------------------------ | ---------------- | ------------------------ |
-| `API_KEY_NOT_CONFIGURED` | No API key found | Prompt user, create .env |
+| `API_KEY_NOT_CONFIGURED` | No API key found | Prompt user, update ~/.env |
 | `AUTH_FAILED`            | Invalid API key  | Ask user for correct key |
 | `TIMEOUT`                | Request timeout  | Retry                    |
 | `NETWORK_ERROR`          | Network issue    | Check connection, retry  |
