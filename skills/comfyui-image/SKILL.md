@@ -1,6 +1,6 @@
 ---
 name: comfyui-image
-description: Generate images using ComfyUI API. Use this skill when user wants to generate images via ComfyUI workflow, including prompts like "使用comfyui生成图片", "comfyui文生图", "comfyui image generation", or requests using local ComfyUI server.
+description: Generate images using ComfyUI API. Use this skill when user wants to generate images via ComfyUI workflow, including prompts like "生成一张图片", "create an image", "文生图", "画一幅画", "给我画个X", "帮我生成图片", "text to image", "AI绘图", "使用comfyui生成图片", "comfyui文生图", "comfyui image generation", or requests using local ComfyUI server.
 ---
 
 # ComfyUI Image Generation

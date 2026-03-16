@@ -12,6 +12,21 @@ Agent Skills 集合。
 
 ---
 
+## ⚠️ 注意：Image Skills 冲突说明
+
+`pollinations-image` 和 `comfyui-image` 两个 skill **不要同时安装**，否则会导致触发冲突！
+
+- `pollinations-image`: 使用 Pollinations.ai 云端 API 进行文生图（无需本地部署）
+- `comfyui-image`: 使用本地 ComfyUI 服务器进行文生图
+
+两个 skill 的触发词相同（都包含"生成图片"、"文生图"等），同时安装会导致系统无法正确识别应该使用哪个 skill。
+
+**建议**:
+- 如果你有本地 ComfyUI 服务器 → 安装 `comfyui-image`
+- 如果你想使用云端 AI 绘图 → 安装 `pollinations-image`
+
+---
+
 ## AstrBot Skills Manager
 
 管理 AstrBot 的 agent skills。
@@ -102,7 +117,8 @@ Agent Skills 集合。
 
 ### Trigger Phrases
 
-- "使用comfyui生成图片", "comfyui文生图", "comfyui画图"
+- "生成图片", "画图", "文生图", "AI绘图", "给我画个X"
+- "create an image", "generate a picture", "text to image"
 - "comfyui generate image", "comfyui image generation"
 
 ### How It Works
