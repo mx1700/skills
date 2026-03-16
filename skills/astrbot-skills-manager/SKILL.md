@@ -73,13 +73,13 @@ Run the install command with `-a openclaw`:
 **For all skills:**
 
 ```bash
-npx skills add <repo> --all -a openclaw
+npx skills add <repo> --all -a openclaw -y
 ```
 
 **For specific skills:**
 
 ```bash
-npx skills add <repo> --skill <skill-name-1> --skill <skill-name-2> -a openclaw
+npx skills add <repo> --skill <skill-name-1> --skill <skill-name-2> -a openclaw -y
 ```
 
 ### Step 5: Verify Installation
@@ -132,18 +132,18 @@ npx skills remove --all
 **Example 2: Install specific skills from a repository**
 
 - User: "安装 vercel-labs/agent-skills 的 react-best-practices"
-- Run: `npx skills add vercel-labs/agent-skills --skill react-best-practices -a openclaw`
+- Run: `npx skills add vercel-labs/agent-skills --skill react-best-practices -a openclaw -y`
 
 **Example 3: Install all skills from a repository**
 
 - User: "安装所有 vercel-labs/agent-skills"
-- Run: `npx skills add vercel-labs/agent-skills --all -a openclaw`
+- Run: `npx skills add vercel-labs/agent-skills --all -a openclaw -y`
 
 **Example 4: Install from a different repository**
 
 - User: "安装 some-other-org/their-skills"
 - Run: `npx skills add some-other-org/their-skills --list` (first list)
-- Then: `npx skills add some-other-org/their-skills --skill <name> -a openclaw`
+- Then: `npx skills add some-other-org/their-skills --skill <name> -a openclaw -y`
 
 **Example 5: Search for skills**
 
