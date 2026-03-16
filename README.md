@@ -27,7 +27,7 @@ Agent Skills 集合。
 2. 询问用户要使用的 skill 仓库（任意 GitHub/GitLab 仓库）
 3. 使用 `npx skills add <repo> --list` 查看可用的 skills
 4. 询问用户要安装哪些 skills
-5. 使用 `-a opencode` 安装到项目级（不使用 `-g` 全局）
+5. 使用 `-a opencode -y` 安装到项目级（不使用 `-g` 全局），`-y` 参数跳过确认
 6. 全部安装时使用 `--all` 参数
 
 ### Source Formats (安装源格式)
@@ -68,16 +68,16 @@ npx skills remove <skill-name>
 
 **安装指定 skills**
 - 用户: "安装 vercel-labs/agent-skills 的 react-best-practices"
-- 运行: `npx skills add vercel-labs/agent-skills --skill react-best-practices -a opencode`
+- 运行: `npx skills add vercel-labs/agent-skills --skill react-best-practices -a opencode -y`
 
 **安装全部 skills**
 - 用户: "安装所有 vercel-labs/agent-skills"
-- 运行: `npx skills add vercel-labs/agent-skills --all -a opencode`
+- 运行: `npx skills add vercel-labs/agent-skills --all -a opencode -y`
 
 **安装任意仓库**
 - 用户: "安装 other-org/some-skills"
 - 运行: `npx skills add other-org/some-skills --list` (先查看)
-- 然后: `npx skills add other-org/some-skills --skill <name> -a opencode`
+- 然后: `npx skills add other-org/some-skills --skill <name> -a opencode -y`
 
 **搜索 skills**
 - 用户: "搜索 react 相关的 skills"
