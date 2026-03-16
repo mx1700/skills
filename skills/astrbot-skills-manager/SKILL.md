@@ -153,7 +153,7 @@ npx skills remove --all
 **Example 6: Install a single skill from a specific path**
 
 - User: "安装某个仓库里的 web-design-guidelines"
-- Run: `npx skills add https://github.com/vercel-labs/agent-skills/tree/main/skills/web-design-guidelines -a openclaw`
+- Run: `npx skills add https://github.com/vercel-labs/agent-skills/tree/main/skills/web-design-guidelines -a openclaw -y`
 
 ## Popular Skill Repositories
 
