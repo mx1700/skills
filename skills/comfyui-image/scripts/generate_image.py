@@ -20,14 +20,8 @@ import requests
 
 
 def find_env_file() -> Optional[Path]:
-    """Find .env file - check skill directory first, then home directory."""
-    # Check skill directory first (for skill-local .env)
-    script_dir = Path(__file__).parent.parent
-    skill_env = script_dir / ".env"
-    if skill_env.exists():
-        return skill_env
-
-    # Check home directory
+    """Find .env file - check home directory only."""
+    # Only check home directory
     home_env = Path.home() / ".env"
     if home_env.exists():
         return home_env
@@ -59,10 +53,8 @@ def check_comfyui_config() -> tuple[bool, Optional[str]]:
 
 
 def write_host_to_env(host: str) -> Path:
-    """Write COMFYUI_HOST to .env file."""
-    # Write to skill directory first
-    script_dir = Path(__file__).parent.parent
-    env_path = script_dir / ".env"
+    """Write COMFYUI_HOST to .env file in home directory."""
+    env_path = Path.home() / ".env"
 
     existing_lines: list[str] = []
     key_exists = False
